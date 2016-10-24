@@ -17,7 +17,7 @@
 
 /*Structure for tar header in ustar format*/
 
-struct header_posix_ustar{
+struct header{
 	char File_name[100]; 												//100
 	char File_mode[8];													//108
 	char Owner_s_numeric_user_ID[8];									//116
@@ -38,22 +38,38 @@ struct header_posix_ustar{
 	};
 
 
-/*Structure for tar header linked list*/
+/*Structure for tar header and data recovery : linked list*/
 
-struct header_posix_ustar_linkedList_node{
-	struct header_posix_ustar header;
-	struct header_posix_ustar_linkedList_node * next;
-};
+struct header_linkedList_node{
+	struct header header;
+	char * data;
+	struct header_linkedList_node * next;
+}node;
+
+struct header_linkedList_node * currentNode;
 
 
 
-/****** Fonctions dans ptar.c ******/
+
+/****** Functions in ptar.c ******/
 
 
 /* 
- *Initialise les pointeurs next de node et de currentNode
+ *Initialise les pointeurs next de node et currentNode
  */
 void initialisation();
+
+
+/** 
+ *Lit 512 octets du fichier tar (représenté par fd) et les range dans le champ header d'un noeud (représenté par node) de la linkedList
+ *Renvoie le nombre de characteres lus.
+ **/
+int readHeaderIntoNode(int fd, struct header_linkedList_node * node);
+
+int readDataIntoNode(int fd, struct header_linkedList_node * node);
+
+void importInformation(int fd);
+
 
 
 /*et autres...*/
@@ -65,12 +81,19 @@ void initialisation();
  *
  * Fait la conversion d'une chaîne de caractères d'un nombre en base 8 en un nombre en base 10
  */
-int octal_to_decimal(char* octalString);
+int octalToDecimal(char* octalString);
 
 
 
 
 
+
+
+/****** Functions in display.c ******/
+
+void displayFileNames();
+
+void displayFileData();
 
 
 #endif /* PTAR_H_ */
