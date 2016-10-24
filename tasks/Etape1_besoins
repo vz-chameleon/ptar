@@ -1,9 +1,16 @@
 \\TODO
 
 ETAPE 1: 
-Un tableau pour stocker les Headers.
-Une fonction pour passer de base 8 (octal) en base 10, afin de sauter le data qui sépare les headers.
 
-Une linkedlist de headers_struct : rajouter un pointeur vers le headers_struct suivant, qu'on pourra malloquer pour rajouter un headers_struct si nécessaire.
+Un tableau pour stocker les Headers. ??--> pas nécessaire ?
+
+Une fonction pour passer de base 8 (octal) en base 10, afin de sauter le data qui sépare les headers. -->Fait
+
+Une linkedlist de headers_struct : rajouter un pointeur vers le headers_struct suivant, qu'on pourra malloquer pour rajouter un headers_struct si nécessaire. --> Fait
 
 Chercher info de fin de fichier TAR.
+
+
+Modulariser le code fait en fonctions pour la lisibilité du main.
+
+

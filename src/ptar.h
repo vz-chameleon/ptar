@@ -5,10 +5,18 @@
  *      Author: Valentina Zelaya et Timothy Garwood
  */
 
+
+
+
 #ifndef PTAR_H_
 #define PTAR_H_
 
+
+/****** Définition des structures utilisées*/
+
+
 /*Structure for tar header in ustar format*/
+
 struct header_posix_ustar{
 	char File_name[100]; 												//100
 	char File_mode[8];													//108
@@ -29,11 +37,37 @@ struct header_posix_ustar{
 	char rest_up_to_512[12];											//512
 	};
 
+
 /*Structure for tar header linked list*/
+
 struct header_posix_ustar_linkedList_node{
 	struct header_posix_ustar header;
 	struct header_posix_ustar_linkedList_node * next;
 };
+
+
+
+/****** Fonctions dans ptar.c ******/
+
+
+/* 
+ *Initialise les pointeurs next de node et de currentNode
+ */
+void initialisation();
+
+
+/*et autres...*/
+
+
+
+
+/* octalString: chaîne de caractères qui représente la taille du fichier en octal 
+ *
+ * Fait la conversion d'une chaîne de caractères d'un nombre en base 8 en un nombre en base 10
+ */
+int octal_to_decimal(char* octalString);
+
+
 
 
 
