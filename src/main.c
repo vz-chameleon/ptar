@@ -22,15 +22,6 @@ int main(int argc, char** argv){
 		//displayFileData();
 
 
-		/*
-		int rh = readHeaderIntoNode(fd,currentNode);
-		int rd = readDataIntoNode(fd,currentNode);
-
-		printf("rh : %d\n rd: %d",rh,rd);
-		printf("data : \n %s",currentNode->data);
-*/
-
-
 	}
 
 	return 0;
