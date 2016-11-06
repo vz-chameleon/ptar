@@ -6,8 +6,6 @@
  */
 
 
-
-
 #ifndef PTAR_H_
 #define PTAR_H_
 
@@ -48,7 +46,7 @@ struct header{
  */
 int octalToDecimal(char* octalString);
 
-void optionManager(char* opts);
+
 
 
 
@@ -58,5 +56,6 @@ void optionManager(char* opts);
 
 void displayFileNames(int fd,struct header file_header);
 
+void displayDetailedListing(int fd,struct header file_header);
 
 #endif /* PTAR_H_ */
