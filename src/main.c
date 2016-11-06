@@ -19,7 +19,7 @@ int main(int argc, char** argv){
   int lflag=0;
   int xflag=0;
   int zflag=0;
-  int tflag=0;
+  int pflag=0;
   
   while((opt=getopt(argc,argv,"lxzph:"))!=-1){
     switch(opt){
@@ -40,7 +40,7 @@ int main(int argc, char** argv){
       break;
 
     case 'p':
-      tflag=1;
+      pflag=1;
       break;
 
     case '?':
@@ -78,7 +78,7 @@ int main(int argc, char** argv){
   
     struct header file_header;
     
-    if ((!lflag)&&(!xflag)&&(!zflag)&&(!tflag)){
+    if ((!lflag)&&(!xflag)&&(!zflag)&&(!pflag)){
         //if there is no option, display the simple listing (default behaviour)
         displayFileNames(fd,file_header);
     }
