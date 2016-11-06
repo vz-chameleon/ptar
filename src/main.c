@@ -8,21 +8,19 @@
 
 
 int main(int argc, char** argv){
-	initialisation();
-	if (argc==1)
-		printf("ERROR : Not enough arguments");
-	else if (argc==2){
+  if (argc<2){
+    printf("Error : ptar command requires one or more arguments \nIf you need help, try running ptar with -h option \n");
+    exit(1);
+  }
+  
+  char fileName[]="";
+  strcpy(fileName,argv[argc-1]);
+  int fd=open(fileName,O_RDONLY,0);
+  
+  struct header file_header;
 
-		char file[] ="";
-		strcpy(file,argv[1]);
-		int fd = open(file, O_RDONLY);
+  displayFileNames(fd,file_header);
 
-		importInformation(fd);
-		displayFileNames();
-		//displayFileData();
-
-
-	}
-
-	return 0;
+  
+  return 0;
 } 

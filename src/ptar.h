@@ -38,44 +38,9 @@ struct header{
 	};
 
 
-/*Structure for tar header and data recovery : linked list*/
-
-struct header_linkedList_node{
-	struct header header;
-	char * data;
-	struct header_linkedList_node * next;
-}node;
-
-struct header_linkedList_node * currentNode;
-
-
 
 
 /****** Functions in ptar.c ******/
-
-
-/* 
- *Initialise les pointeurs next de node et currentNode
- */
-void initialisation();
-
-
-/** 
- *Lit 512 octets du fichier tar (représenté par fd) et les range dans le champ header d'un noeud (représenté par node) de la linkedList
- *Renvoie le nombre de characteres lus.
- **/
-int readHeaderIntoNode(int fd, struct header_linkedList_node * node);
-
-int readDataIntoNode(int fd, struct header_linkedList_node * node);
-
-void importInformation(int fd);
-
-
-
-/*et autres...*/
-
-
-
 
 /* octalString: chaîne de caractères qui représente la taille du fichier en octal 
  *
@@ -83,7 +48,7 @@ void importInformation(int fd);
  */
 int octalToDecimal(char* octalString);
 
-
+void optionManager(char* opts);
 
 
 
@@ -91,9 +56,7 @@ int octalToDecimal(char* octalString);
 
 /****** Functions in display.c ******/
 
-void displayFileNames();
-
-void displayFileData();
+void displayFileNames(int fd,struct header file_header);
 
 
 #endif /* PTAR_H_ */
