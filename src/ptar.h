@@ -44,7 +44,7 @@ struct header{
  *
  * Fait la conversion d'une chaîne de caractères d'un nombre en base 8 en un nombre en base 10
  */
-int octalToDecimal(char* octalString);
+long octalToDecimal(char* octalString);
 
 
 

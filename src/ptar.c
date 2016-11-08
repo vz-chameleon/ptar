@@ -12,10 +12,10 @@
 #include "ptar.h"
 
 
-int octalToDecimal(char * octalString){
+long octalToDecimal(char * octalString){
 
-  int oct = atoi(octalString);
-  int dec=0;
+  long oct = atol(octalString);
+  long dec=0;
   int i=0;
 
   while(oct!=0){
