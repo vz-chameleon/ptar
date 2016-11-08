@@ -70,7 +70,7 @@ void printPermissionString(char* file_mode){
 	//snprintf(permissionString, sizeof(permissionString), "%s%s%s%s", "-", userPerm, groupPerm, allPerm);
 }
 
-void printModifTime(char * path, int secSince1970){
+void printModifTime(char * path){
 
 	struct stat attr;
 	stat(path,&attr);
