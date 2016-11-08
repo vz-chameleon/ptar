@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RS2016 result</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<div class="container-fluid">
+<h1>Test results for: rs2016-GarwoodZelaya</h1>
+
+<h2>General information</h2>
+<p>Git version tested (output of "git show -s"):<br/>
+<pre>commit 52d8071b74715daeaef85f5c3545105d66b0106e
+Author: GTimothy &lt;timothy.garwood@protonmail.com&gt;
+Date:   Tue Oct 25 14:53:42 2016 +0200
+
+    Update main.c : deleted comments
+</pre></p>
+<ul>
+<li>AUTHORS found: yes</li>
+<li>Makefile found: yes</li>
+<li>rapport.pdf found: <b>no</b></li>
+</ul>
+<h2>AUTHORS</h2>
+<pre>Garwood Timothy
+Zelaya Valentina</pre>
+<h2>Build</h2>
+<ul>
+<li>'make' output:
+<pre>cc    -c -o src/ptar.o src/ptar.c
+cc    -c -o src/display.o src/display.c
+cc    -c -o src/main.o src/main.c
+gcc -g src/ptar.o src/display.o src/main.o -o ptar -lm
+</pre>
+</li>
+<li>'make' exit status: 0</li>
+<li>'make built a 'ptar' executable? yes</li>
+</ul>
+<h2>Test: archive with only files, basic listing: Fail</h2>
+Exit status (124 or 137 mean that the program was killed after a timeout): 139 (should be 0)
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>f1.0</strong></del></li>
+    <li class="del"><del><strong>f1.2047</strong></del></li>
+    <li class="del"><del><strong>f1.2048</strong></del></li>
+    <li class="del"><del><strong>f1.2049</strong></del></li>
+    <li class="del"><del><strong>f1.511</strong></del></li>
+    <li class="del"><del><strong>f1.512</strong></del></li>
+    <li class="del"><del><strong>f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>Segmentation fault</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, basic listing: Fail</h2>
+Exit status (124 or 137 mean that the program was killed after a timeout): 139 (should be 0)
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>Segmentation fault</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, basic listing: Fail</h2>
+Exit status (124 or 137 mean that the program was killed after a timeout): 139 (should be 0)
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d2/symlink_to_f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>Segmentation fault</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with only files, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>-rw-r--r-- 1000/1000 0 2016-10-24 11:26:45 f1.0</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2047 2016-10-24 11:26:28 f1.2047</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2048 2016-10-24 11:26:28 f1.2048</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2049 2016-10-24 11:26:28 f1.2049</del></li>
+    <li class="del"><del>-rw------- 1000/1000 511 2016-10-24 11:26:28 f1.511</del></li>
+    <li class="del"><del>-rw------- 1000/1000 512 2016-10-24 11:26:28 f1.512</del></li>
+    <li class="del"><del>-rw------- 1000/1000 513 2016-10-24 11:26:28 f1.513</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:27 test/d2/</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- 1000/1000 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- 1000/1000 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048</del></li>
+    <li class="del"><del>-rw------- 1000/1000 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:28 test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2016-10-24 12:23:49 test/d2/</del></li>
+    <li class="del"><del>lrwxrwxrwx 1000/1000 0 2016-10-24 12:22:14 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- 1000/1000 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</del></li>
+    <li class="del"><del>-rw------- 1000/1000 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</del></li>
+    <li class="del"><del>-rw------- 1000/1000 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</del></li>
+    <li class="del"><del>-rw------- 1000/1000 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048</del></li>
+    <li class="del"><del>drwx------ 1000/1000 0 2011-09-18 14:39:28 test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with only files, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>-rw-r--r-- vagrant/vagrant   0 2016-10-24 11:26 f1.0</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2016-10-24 11:26 f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2016-10-24 11:26 f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2016-10-24 11:26 f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  511 2016-10-24 11:26 f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2016-10-24 11:26 f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2016-10-24 11:26 f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d2/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2016-10-24 12:23 test/d2/</strong></del></li>
+    <li class="del"><del><strong>lrwxrwxrwx vagrant/vagrant   0 2016-10-24 12:22 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+
+</div>
+</body>
+</html>
