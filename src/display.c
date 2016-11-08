@@ -18,7 +18,7 @@
 #include "ptar.h"
 
 void displayFileNames(int fd,struct header file_header){
-	int size = 0;
+	long size = 0;
 	int lecture = read(fd,&file_header,512);
 
 	while(lecture != 0){
@@ -70,37 +70,19 @@ void printPermissionString(char* file_mode){
 	//snprintf(permissionString, sizeof(permissionString), "%s%s%s%s", "-", userPerm, groupPerm, allPerm);
 }
 
-void printModifTime(char * path){
-
+void printModifTime(char * path, long secSince1970){
 	struct stat attr;
 	stat(path,&attr);
+	time_t t = secSince1970;
 	struct tm *tm;
-	tm=localtime(&attr.st_mtim);
+	tm=localtime(&t);
 
 
 	printf("%d-%.2d-%.2d %.2d:%.2d:%.2d ",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday,tm->tm_hour,tm->tm_min,tm->tm_sec);
 
-
-
-//	time_t time=(secSince1970);
-//	struct tm *p = gmtime ( &time );
-//	printf("testinnnnnng old  %d   ", p->tm_hour);
-
-//	char * date = ctime(time);
-//	char * token;
-//	int i=0;
-//	char dateArray[25];
-//	while ((token = strsep(date, " "))) {
-//		int tSize=sizeof(token);
-//		strcpy(dateArray[i],token);
-//		i=i+tSize;
-//	}
-//
-//	printf("\nTEST2 :%s\n",dateArray);
-
 }
 void displayDetailedListing(int fd,struct header file_header){
-	int size = 0;
+	long size = 0;
 	int lecture = read(fd,&file_header,512);
 
 	while(lecture != 0){
@@ -120,7 +102,7 @@ void displayDetailedListing(int fd,struct header file_header){
 			printPermissionString(file_header.File_mode);
 			printf("%s/",file_header.Owner_user_name);
 			printf("%s ",file_header.Owner_group_name);
-			printf("%d ", size);
+			printf("%ld ", size);
 			printModifTime(file_header.File_name,octalToDecimal(file_header.Last_modification_time_in_numeric_Unix_time_format_OctalB));
 
 			//printf("%s ",file_header.Last_modification_time_in_numeric_Unix_time_format_OctalB);
