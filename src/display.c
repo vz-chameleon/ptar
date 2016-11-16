@@ -18,11 +18,11 @@
 #include "ptar.h"
 
 void displayFileNames(int fd,struct header file_header){
-	long size = 0;
+	long jump_size = 0;
 	int lecture = read(fd,&file_header,512);
 
 	while(lecture != 0){
-		size = octalToDecimal(file_header.File_size_in_bytes_octalB);
+		jump_size = octalToDecimal(file_header.File_size_in_bytes_octalB);
 		//TODO
 		//Better the condition to print or to get out of the loop
 		//Compare to a block of 512 zeros ?
@@ -30,8 +30,14 @@ void displayFileNames(int fd,struct header file_header){
 			printf("%s\n",file_header.File_name);
 
 		//If the file contains data, skip to the next file header
-		if(size!=0)
-			lseek(fd,(size/512+1)*512,SEEK_CUR);
+		if(jump_size!=0){
+			
+		 if (jump_size%512){
+			 jump_size += 512 - (jump_size % 512);
+		 }
+		
+			lseek(fd,jump_size,SEEK_CUR);
+		}
 		//and read it
 		lecture = read(fd,&file_header,512);
 
