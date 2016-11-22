@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RS2016 result</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<div class="container-fluid">
+<h1>Test results for: rs2016-GarwoodZelaya</h1>
+
+<h2>General information</h2>
+<p>Git version tested (output of "git show -s"):<br/>
+<pre>commit 68f2e005e21519dcd380e8018c4baed7659c0d59
+Author: GTimothy &lt;timothy.garwood@protonmail.com&gt;
+Date:   Wed Nov 9 00:54:17 2016 +0100
+
+    fixed printModifTime
+</pre></p>
+<ul>
+<li>AUTHORS found: yes</li>
+<li>Makefile found: yes</li>
+<li>rapport.pdf found: <b>no</b></li>
+</ul>
+<h2>AUTHORS</h2>
+<pre>Garwood Timothy
+Zelaya Valentina</pre>
+<h2>Build</h2>
+<ul>
+<li>'make' output:
+<pre>cc    -c -o src/ptar.o src/ptar.c
+cc    -c -o src/display.o src/display.c
+cc    -c -o src/main.o src/main.c
+gcc -g src/ptar.o src/display.o src/main.o -o ptar -lm
+</pre>
+</li>
+<li>'make' exit status: 0</li>
+<li>'make built a 'ptar' executable? yes</li>
+</ul>
+<h2>Test: archive with files only, basic listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>f1.0</span></li>
+    <li class="unchanged"><span>f1.2047</span></li>
+    <li class="unchanged"><span>f1.2048</span></li>
+    <li class="del"><del>f<strong>1.2049</strong></del></li>
+    <li class="unchanged"><span>f1.511</span></li>
+    <li class="unchanged"><span>f1.512</span></li>
+    <li class="del"><del><strong>f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>f1.0</span></li>
+    <li class="unchanged"><span>f1.2047</span></li>
+    <li class="unchanged"><span>f1.2048</span></li>
+    <li class="ins"><ins><strong>ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ı</strong>f<strong>:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@</strong></ins></li>
+    <li class="ins"><ins><strong>ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š†</strong></ins></li>
+    <li class="ins"><ins><strong>ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ</strong></ins></li>
+    <li class="ins"><ins><strong>#Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT</strong></ins></li>
+    <li class="ins"><ins><strong></strong></ins></li>
+    <li class="unchanged"><span>f1.511</span></li>
+    <li class="unchanged"><span>f1.512</span></li>
+    <li class="ins"><ins><strong>£(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½ˆR~,ş</strong></ins></li>
+    <li class="ins"><ins><strong>v</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, basic listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="del"><del>t<strong>est/d1/d1.1/f1.2049</strong></del></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2047</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="unchanged"><span>test/d3/</span></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="ins"><ins><strong>ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúê</strong>t<strong>?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@</strong></ins></li>
+    <li class="ins"><ins><strong>ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š†</strong></ins></li>
+    <li class="ins"><ins><strong>ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ</strong></ins></li>
+    <li class="ins"><ins><strong>#Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT</strong></ins></li>
+    <li class="ins"><ins><strong></strong></ins></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2047</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="ins"><ins><strong>£(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½x²X¨ı</strong></ins></li>
+    <li class="ins"><ins><strong>v</strong></ins></li>
+    <li class="unchanged"><span>test/d3/</span></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, basic listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d2/symlink_to_f1.511</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.513</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2049</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="del"><del>test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d2/symlink_to_f1.511</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.513</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2049</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="ins"><ins><strong>y—&quot;ÖMŞ–æ\&gt;Ö</strong></ins></li>
+    <li class="ins"><ins><strong>¬œ/]&lt;ôMÄËñMÉkOÿŠØgJ4–#ÉÚ:sîˆQ?m“</strong></ins></li>
+    <li class="ins"><ins><strong>bœ¬¹¬A,</strong></ins></li>
+    <li class="ins"><ins><strong>5ìò¨£VñÈ¿/;şn$“ƒ…è¥ï®õ¯e3íNL[ÍÔBìLGV7ù$Áä»à’c=±(s–¸S‹•bs«²ş)ü6</strong></ins></li>
+    <li class="ins"><ins><strong>˜L&quot;ôù}¼UŸµ…¦ô=#Q5ıº!ïÓ­â®„~#Çı¨QùOæd¼aÒPªRshj•ïÚ¢b ¹¯,</strong></ins></li>
+    <li class="ins"><ins><strong>†F}°¨Î†ÌÌJÂâ¹áÇåŒÂôØzâ‹m/˜6Ø	 ÏğX´×£</strong></ins></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, basic listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>f1.0</span></li>
+    <li class="unchanged"><span>f1.2047</span></li>
+    <li class="unchanged"><span>f1.2048</span></li>
+    <li class="del"><del>f<strong>1.2049</strong></del></li>
+    <li class="unchanged"><span>f1.511</span></li>
+    <li class="unchanged"><span>f1.512</span></li>
+    <li class="del"><del><strong>f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>f1.0</span></li>
+    <li class="unchanged"><span>f1.2047</span></li>
+    <li class="unchanged"><span>f1.2048</span></li>
+    <li class="ins"><ins><strong>ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ı</strong>f<strong>:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@</strong></ins></li>
+    <li class="ins"><ins><strong>ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š†</strong></ins></li>
+    <li class="ins"><ins><strong>ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ</strong></ins></li>
+    <li class="ins"><ins><strong>#Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT</strong></ins></li>
+    <li class="ins"><ins><strong></strong></ins></li>
+    <li class="unchanged"><span>f1.511</span></li>
+    <li class="unchanged"><span>f1.512</span></li>
+    <li class="ins"><ins><strong>£(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½H!l‡ÿ</strong></ins></li>
+    <li class="ins"><ins><strong>v</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, basic listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="del"><del>t<strong>est/d1/d1.1/f1.2049</strong></del></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2047</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="unchanged"><span>test/d3/</span></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="ins"><ins><strong>ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúê</strong>t<strong>?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@</strong></ins></li>
+    <li class="ins"><ins><strong>ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š†</strong></ins></li>
+    <li class="ins"><ins><strong>ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ</strong></ins></li>
+    <li class="ins"><ins><strong>#Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT</strong></ins></li>
+    <li class="ins"><ins><strong></strong></ins></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2047</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="ins"><ins><strong>£(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½$¾ş</strong></ins></li>
+    <li class="ins"><ins><strong>v</strong></ins></li>
+    <li class="unchanged"><span>test/d3/</span></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, basic listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d2/symlink_to_f1.511</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.513</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2049</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+    <li class="del"><del>test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="unchanged"><span>test/</span></li>
+    <li class="unchanged"><span>test/d2/</span></li>
+    <li class="unchanged"><span>test/d2/symlink_to_f1.511</span></li>
+    <li class="unchanged"><span>test/d1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.513</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.511</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2049</span></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.512</span></li>
+    <li class="ins"><ins><strong>y—&quot;ÖMŞ–æ\&gt;Ö</strong></ins></li>
+    <li class="ins"><ins><strong>¬œ/]&lt;ôMÄËñMÉkOÿŠØgJ4–#ÉÚ:sîˆQ?m“</strong></ins></li>
+    <li class="ins"><ins><strong>bœ¬¹¬A,</strong></ins></li>
+    <li class="ins"><ins><strong>5ìò¨£VñÈ¿/;şn$“ƒ…è¥ï®õ¯e3íNL[ÍÔBìLGV7ù$Áä»à’c=±(s–¸S‹•bs«²ş)ü6</strong></ins></li>
+    <li class="ins"><ins><strong>˜L&quot;ôù}¼UŸµ…¦ô=#Q5ıº!ïÓ­â®„~#Çı¨QùOæd¼aÒPªRshj•ïÚ¢b ¹¯,</strong></ins></li>
+    <li class="ins"><ins><strong>†F}°¨Î†ÌÌJÂâ¹áÇåŒÂôØzâ‹m/˜6Ø	 ÏğX´×£</strong></ins></li>
+    <li class="unchanged"><span>test/d1/d1.1/f1.2048</span></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>-rw-r--r-- <strong>1000/1000</strong> 0 2016-10-24 11:26:45 f1.0</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2047 2016-10-24 11:26:28 f1.2047</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2016-10-24 11:26:28 f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2049 2016-10-24 11:26:28 f1.2049</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2016-10-24 11:26:28 f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2016-10-24 11:26:28 f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 513 2016-10-24 11:26:28 f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>-rw-r--r-- <strong>lucas/lucas</strong> 0 2016-10-24 11:26:45 f1.0<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2047 2016-10-24 11:26:28 f1.2047<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2016-10-24 11:26:28 f1.2048<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ …8ó¦O†S&lt;@/grô QŸ]iš&amp; &#39;Z7T58¦‹Ü_¸È­)4o77ùå³p€ö$Ç2sÊ°éqôo¯ó†4RÛ’úƒCš­›Îìtj(ŞOĞ]VıÚ¦ºb–Ü›³‡Ê2¬6t›EçˆğÃ±²²¸¤0·hÉıkÈ©)¥¡CŠë8	4*}Zo;F¸+í¡9T¿×‡!®&#39;</strong></ins></li>
+    <li class="ins"><ins><strong>×ğŠT&amp;¼Î ‰| 0 1970-01-01 00:00:00 ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@ </strong></ins></li>
+    <li class="ins"><ins><strong>-@ v8È©:oêÅÙëoÆ¥ü^q—é•71«kÖè&lt;–Ëa)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®(L53ş/)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®(L53ş 0 1970-01-01 00:00:00 ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š† </strong></ins></li>
+    <li class="ins"><ins><strong>-@ îµWİœ¦8Q}S¶1ê&amp;‚}MÙÓE[tAìZí¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ/í¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ 0 1970-01-01 00:00:00 ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ </strong></ins></li>
+    <li class="ins"><ins><strong>-r-x@ ÔK±š³ÎT–wWo†Äö²oJÑ­ü•&lt;êª8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x/8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x 0 1970-01-01 00:00:00 #Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00  </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2016-10-24 11:26:28 f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2016-10-24 11:26:28 f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ €{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½(L53ş/]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½(L53ş 0 1970-01-01 00:00:00 £(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½(L53ş </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00 v </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:27 test/d2/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:28 test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:36 test/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:27 test/d2/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:42 test/d1/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ …8ó¦O†S&lt;@/grô QŸ]iš&amp; &#39;Z7T58¦‹Ü_¸È­)4o77ùå³p€ö$Ç2sÊ°éqôo¯ó†4RÛ’úƒCš­›Îìtj(ŞOĞ]VıÚ¦ºb–Ü›³‡Ê2¬6t›EçˆğÃ±²²¸¤0·hÉıkÈ©)¥¡CŠë8	4*}Zo;F¸+í¡9T¿×‡!®&#39;</strong></ins></li>
+    <li class="ins"><ins><strong>×ğŠT&amp;¼Î ‰| 0 1970-01-01 00:00:00 ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@ </strong></ins></li>
+    <li class="ins"><ins><strong>-@ v8È©:oêÅÙëoÆ¥ü^q—é•71«kÖè&lt;–Ëa)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®8aw›ü/)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®8aw›ü 0 1970-01-01 00:00:00 ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š† </strong></ins></li>
+    <li class="ins"><ins><strong>-@ îµWİœ¦8Q}S¶1ê&amp;‚}MÙÓE[tAìZí¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ/í¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ 0 1970-01-01 00:00:00 ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ </strong></ins></li>
+    <li class="ins"><ins><strong>-r-x@ ÔK±š³ÎT–wWo†Äö²oJÑ­ü•&lt;êª8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x/8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x 0 1970-01-01 00:00:00 #Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00  </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ €{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½8aw›ü/]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½8aw›ü 0 1970-01-01 00:00:00 £(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½8aw›ü </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00 v </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:28 test/d3/<strong> </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, detailed listing: Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2016-10-24 12:23:49 test/d2/</del></li>
+    <li class="del"><del>lrwxrwxrwx <strong>1000/1000</strong> 0 2016-10-24 12:22:14 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>drwx------ 1000/1000 0 2011-09-18 14:39:28 test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:36 test/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2016-10-24 12:23:49 test/d2/<strong> </strong></ins></li>
+    <li class="ins"><ins>lrwxrwxrwx <strong>lucas/lucas</strong> 0 2016-10-24 12:22:14 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:42 test/d1/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ £!!qkì•jÅÅ|q#N×è†İhàÇj‹ªX™ğ9ŒR&amp;k[¤X,¨ƒl$Øz_¼ä|z¬6ìvoeÙ›˜ì?ÈzsXéşéÏMÅì–£</strong></ins></li>
+    <li class="ins"><ins><strong>áƒ8øY6ò6¥İ¸ë¾û$µşºä75o×Ü¤Öe§qGï\â’¸lÉU)”Üó2ƒ‘ºv0ó5MÔd‰å¼~§8Ö+¢-:u;ÚÒ»œzJÉè	¦5iƒôNˆ.LKç´bfVzÂ¹cs äY=ãÜ´JÂ_şï±wR8«c#%fˆ‹F;=ìïCEpÿ1J/¯êüŸºº4èÕ’Oÿ/j‹ªX™ğ9ŒR&amp;k[¤X,¨ƒl$Øz_¼ä|z¬6ìvoeÙ›˜ì?ÈzsXéşéÏMÅì–£</strong></ins></li>
+    <li class="ins"><ins><strong>áƒ8øY6ò6¥İ¸ë¾û$µşºä75o×Ü¤Öe§qGï\â’¸lÉU)”Üó2ƒ‘ºv0ó5MÔd‰å¼~§8Ö+¢-:u;ÚÒ»œzJÉè	¦5iƒôNˆ.LKç´bfVzÂ¹cs äY=ãÜ´JÂ_şï±wR8«c#%fˆ‹F;=ìïCEpÿ1J/¯êüŸºº4èÕ’Oÿ 0 1970-01-01 00:00:00 y—&quot;ÖMŞ–æ\&gt;Ö </strong></ins></li>
+    <li class="ins"><ins><strong>-@ –j¶ú\: ×Ïm9àTÙ·´Ò8&gt;Z`ÅwO¶©&#39;&gt;LŸY¤c}°¡­Éÿ^5Pç&amp;/â[’ÓÇ™ØÂû¸A†vâëİûÇA¨‘ş[õH3láÆ*ERNZ§Ô*ª2²Æ¾ ¤Û”3VYÉNWĞoGàAfl‘&quot;P²5&amp;eª˜¬9’{Hp³~Î9B¯u ”ÄgıìÁo9¸8„ñ—¶‰÷%ozçÑuúiA’„aO&amp;@5&#39;J&amp;ù‹”®TÙ¯SËa}›êGOûG9}„C</strong></ins></li>
+    <li class="ins"><ins><strong>#æs	ívê]ùE4ó;g „ŒAn%pGKj&gt;}/Y¤c}°¡­Éÿ^5Pç&amp;/â[’ÓÇ™ØÂû¸A†vâëİûÇA¨‘ş[õH3láÆ*ERNZ§Ô*ª2²Æ¾ ¤Û”3VYÉNWĞoGàAfl‘&quot;P²5&amp;eª˜¬9’{Hp³~Î9B¯u ”ÄgıìÁo9¸8„ñ—¶‰÷%ozçÑuúiA’„aO&amp;@5&#39;J&amp;ù‹”®TÙ¯SËa}›êGOûG9}„C</strong></ins></li>
+    <li class="ins"><ins><strong>#æs	ívê]ùE4ó;g „ŒAn%pGKj&gt;} 0 1970-01-01 00:00:00 ¬œ/]&lt;ôMÄËñMÉkOÿŠØgJ4–#ÉÚ:sîˆQ?m“</strong></ins></li>
+    <li class="ins"><ins><strong>bœ¬¹¬A, </strong></ins></li>
+    <li class="ins"><ins><strong>-@ 5$r’Š½#ÃÈ2z™¾««,ÎôG’†I][Â—i¢bq1Qñó £w°^iÍUù(¥	.œÁ&lt;+¾aÁç1È›hQGŸV[sğú+—&quot;.Îïë—æ©»Èv¬´äzÃ3ˆ/¢bq1Qñó £w°^iÍUù(¥	.œÁ&lt;+¾aÁç1È›hQGŸV[sğú+—&quot;.Îïë—æ©»Èv¬´äzÃ3ˆ 0 1970-01-01 00:00:00 5ìò¨£VñÈ¿/;şn$“ƒ…è¥ï®õ¯e3íNL[ÍÔBìLGV7ù$Áä»à’c=±(s–¸S‹•bs«²ş)ü6</strong></ins></li>
+    <li class="ins"><ins><strong>˜L&quot;ôù}¼UŸµ…¦ô=#Q5ıº!ïÓ­â®„~#Çı¨QùOæd¼aÒPªRshj•ïÚ¢b ¹¯, </strong></ins></li>
+    <li class="ins"><ins><strong>-@ &gt;º¨%ƒ&amp;êÕ|rI#\eıOQh˜F…}üÛvn„Æ¾2I‚fûŒÌµ‰bõ1áË¤K­¨şVã×»±ußdŞzäzŸ‚Tl‘E/h€cLdáœ¤Œ2“Ô¦üÛJFn„Ø°¼­j~’</strong></ins></li>
+    <li class="ins"><ins><strong>Y ÊÁ­ÍÊ³N©‰9Y*Ó®Æ\ôÏO“•iQ_¯BÊf4</strong></ins></li>
+    <li class="ins"><ins><strong>Ë®Í)ÍÎÂv´Ha×ŸuÅ­O^w¬zs×ŞÙæˆqOôÓ\X¸vî*0%á—~ü/!otÑ=ww,ãµ.s4&quot;ÌÇÚ&quot;8áÒÊ›&#39;Ì*å¢¶P/2I‚fûŒÌµ‰bõ1áË¤K­¨şVã×»±ußdŞzäzŸ‚Tl‘E/h€cLdáœ¤Œ2“Ô¦üÛJFn„Ø°¼­j~’</strong></ins></li>
+    <li class="ins"><ins><strong>Y ÊÁ­ÍÊ³N©‰9Y*Ó®Æ\ôÏO“•iQ_¯BÊf4</strong></ins></li>
+    <li class="ins"><ins><strong>Ë®Í)ÍÎÂv´Ha×ŸuÅ­O^w¬zs×ŞÙæˆqOôÓ\X¸vî*0%á—~ü/!otÑ=ww,ãµ.s4&quot;ÌÇÚ&quot;8áÒÊ›&#39;Ì*å¢¶P 0 1970-01-01 00:00:00 †F}°¨Î†ÌÌJÂâ¹áÇåŒÂôØzâ‹m/˜6Ø	 ÏğX´×£ </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong> </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, detailed listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>-rw-r--r-- <strong>1000/1000</strong> 0 2016-10-24 11:26:45 f1.0</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2047 2016-10-24 11:26:28 f1.2047</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2016-10-24 11:26:28 f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2049 2016-10-24 11:26:28 f1.2049</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2016-10-24 11:26:28 f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2016-10-24 11:26:28 f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 513 2016-10-24 11:26:28 f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>-rw-r--r-- <strong>lucas/lucas</strong> 0 2016-10-24 11:26:45 f1.0<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2047 2016-10-24 11:26:28 f1.2047<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2016-10-24 11:26:28 f1.2048<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ …8ó¦O†S&lt;@/grô QŸ]iš&amp; &#39;Z7T58¦‹Ü_¸È­)4o77ùå³p€ö$Ç2sÊ°éqôo¯ó†4RÛ’úƒCš­›Îìtj(ŞOĞ]VıÚ¦ºb–Ü›³‡Ê2¬6t›EçˆğÃ±²²¸¤0·hÉıkÈ©)¥¡CŠë8	4*}Zo;F¸+í¡9T¿×‡!®&#39;</strong></ins></li>
+    <li class="ins"><ins><strong>×ğŠT&amp;¼Î ‰| 0 1970-01-01 00:00:00 ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@ </strong></ins></li>
+    <li class="ins"><ins><strong>-@ v8È©:oêÅÙëoÆ¥ü^q—é•71«kÖè&lt;–Ëa)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®¸Éwü/)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®¸Éwü 0 1970-01-01 00:00:00 ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š† </strong></ins></li>
+    <li class="ins"><ins><strong>-@ îµWİœ¦8Q}S¶1ê&amp;‚}MÙÓE[tAìZí¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ/í¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ 0 1970-01-01 00:00:00 ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ </strong></ins></li>
+    <li class="ins"><ins><strong>-r-x@ ÔK±š³ÎT–wWo†Äö²oJÑ­ü•&lt;êª8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x/8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x 0 1970-01-01 00:00:00 #Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00  </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2016-10-24 11:26:28 f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2016-10-24 11:26:28 f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ €{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½¸Éwü/]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½¸Éwü 0 1970-01-01 00:00:00 £(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½¸Éwü </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00 v </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, detailed listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:27 test/d2/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:28 test/d3/</del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:36 test/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:27 test/d2/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:42 test/d1/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ …8ó¦O†S&lt;@/grô QŸ]iš&amp; &#39;Z7T58¦‹Ü_¸È­)4o77ùå³p€ö$Ç2sÊ°éqôo¯ó†4RÛ’úƒCš­›Îìtj(ŞOĞ]VıÚ¦ºb–Ü›³‡Ê2¬6t›EçˆğÃ±²²¸¤0·hÉıkÈ©)¥¡CŠë8	4*}Zo;F¸+í¡9T¿×‡!®&#39;</strong></ins></li>
+    <li class="ins"><ins><strong>×ğŠT&amp;¼Î ‰| 0 1970-01-01 00:00:00 ÈÎì*:</strong></ins></li>
+    <li class="ins"><ins><strong>¢‹hJÄ)á4š©ë¼ç–[.×õQmúêt?0}ºğˆ(N¤«&amp;ôë3 ö’S½¼éÆÕ«›ÅsL\©Ëş†™\æ©5)&quot;øö÷Õá£~x&amp;ŒÒC¥[0™î­…{oB0x£››ò3&#39;„R{%˜ ZŞÂÙLÁš`‚ás@’ÖT¬ìÌ½|Ù½‚/¨ƒ=êYB£¼Dœ;7X5?´2:ğÒ¯ıf:3&amp;7‰ŠVÚÍ½Oy ZŠƒj‘[¬Zõ–vKëìÌ7lº_T¿ ä b‚›»×Í(íœy~ğ¿Ô?6¤¶A¦üŠƒ{DS³^ŸâÚ…8ó¦O†S&lt;@ </strong></ins></li>
+    <li class="ins"><ins><strong>-@ v8È©:oêÅÙëoÆ¥ü^q—é•71«kÖè&lt;–Ëa)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®ø¹Ê1ÿ/)÷ğ¢Å¼bsÑm`ÀÏƒ‰å´ÌY¸½æà4ƒÇÊ</strong></ins></li>
+    <li class="ins"><ins><strong>ïHÌìDş«í*dı)D&amp;‚8[lîZ8øõÂ¤’‚É?,cÕx</strong></ins></li>
+    <li class="ins"><ins><strong>0h²}^&amp;ållÉˆ7‰‡dÆ</strong></ins></li>
+    <li class="ins"><ins><strong>ÌÿJNõ:µ¾HZ×u—jÆV¶¼ğşÄdG5ÌX¼áS%&amp;7,‘¢?ªœ9…œd(ÿs­¾ƒ_ÃÅèx©cì.ê}6ÎµyÏq~)ì¦_+2„Á§ÂÉW[4ªßaÁèÀíÎgY¶®Wc})©œê6ˆEP=®ø¹Ê1ÿ 0 1970-01-01 00:00:00 ĞxV•Gåç.,ÁÙºÏŸ–ØèôÀTäwubÂ)TİšB´¼.&gt;aIw`-è14À°÷¯	™&lt;9/÷XA·ú°§Š† </strong></ins></li>
+    <li class="ins"><ins><strong>-@ îµWİœ¦8Q}S¶1ê&amp;‚}MÙÓE[tAìZí¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ/í¦tU!z»_ÈEó -GSÂŞwpâQêÕ!9!lénñ^‘</strong></ins></li>
+    <li class="ins"><ins><strong>°g4ìÇ&quot;†ıñ 0 1970-01-01 00:00:00 ÆP-1=)„&lt;¹úBÏFùÓ¯EM·óØ1HÜà&gt;”F[Ö±È+Ò•VÜ¸SÖ/&amp;›Hƒg¤ñ </strong></ins></li>
+    <li class="ins"><ins><strong>-r-x@ ÔK±š³ÎT–wWo†Äö²oJÑ­ü•&lt;êª8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x/8â!“Ãvl_Õû|H„—Ö|°Bw°»‰AHfaipWx</strong></ins></li>
+    <li class="ins"><ins><strong>µe%ğ4ÚüJğÇ–P!x 0 1970-01-01 00:00:00 #Óifæ}ŸçxEêf¾Ø%.3o·Z‚D×’-gò§LfŸ)–û„</strong></ins></li>
+    <li class="ins"><ins><strong>#¾}ÑÒ#E(Şƒ¹²¹÷E&#39;´ŒÁOd˜.ÄÖ‡Äöõ3©;´$¥2£ñÓõ³“/iõW×É©m¯aC8&gt;5Ã1cÂ+©¡?¬w‹ÈÔušQ°i “:¨›4¯?%lÿ­‰\½ã#ùm•_lUÛH4îdÚXÕò+–¯&lt;8	šGBœi®…¾wT–Ã54ÑuT </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00  </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ €{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½ø¹Ê1ÿ/]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½ø¹Ê1ÿ 0 1970-01-01 00:00:00 £(e™”3±Å)=ùBS¨[ß?ø]àÿÿjÆÇr‡0ç®à=ex^ª°c.ïhF×„Üx0S’ÆKáá°,©ıÊ*şFk„C¥@Ô¢N‰I2‰ä&gt;ª¦É_x!İÁÄØ£8dq¸_ÄÔR8LáÉgÏéÍ§“MÜ´WVóV:D[É[¤,7MÄĞqü¥Q÷QäôæDyå¶Mq ªd[³ÁçáıQ«1Iİò¦ğ¸á=ª¸R){¬0$Ší.êĞA½O&gt;æ7~Â…ê¨k£à{¹™Í¸ø‹Q‰v¬Ñ¤n»nWìâ^CSˆÀá*íÌÎb8İqPUeoH˜»–pW“ò±‘Ü€{:ÿP±ı!Ö+0dÍPÓÜĞ*±4O±Wv¼|›]&amp;Iiº&#39;üşK“Êoğ†+ÎÙ	ÛEÃ›Œgş5f†¥&lt;KPFöÎ7³»w5c§§¬¤î4°QM&quot;‰æE -8×æ[×l€27Ü±7T7´]ƒõûÛ÷ëI˜ÊØÂ¹=áÇ…*A£ƒ†{@–	Š¹ch6lÕMz=·`©€&gt;ÎAÁ?Šqvg÷•3&lt;‘-5«éFyliqÊ\‡Í)x•™.ÿí„ÿ‰³~S¿ì”úÕ£&quot;Ëíc€à¤$÷\ƒÅò[ïK*˜ûC´‘Îé$ïıg½ø¹Ê1ÿ </strong></ins></li>
+    <li class="ins"><ins><strong>-@ / 0 1970-01-01 00:00:00 v </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:28 test/d3/<strong> </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, detailed listing (using more advanced monitoring tools): Fail</h2>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:36 test/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2016-10-24 12:23:49 test/d2/</del></li>
+    <li class="del"><del>lrwxrwxrwx <strong>1000/1000</strong> 0 2016-10-24 12:22:14 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:39:42 test/d1/</del></li>
+    <li class="del"><del>drwx------ <strong>1000/1000</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049</del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong></strong></del></li>
+    <li class="del"><del><strong>-rw------- 1000/1000 2047 2011-09-18 14:44:31 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del>-rw------- <strong>1000/1000</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong></strong></del></li>
+    <li class="del"><del><strong>drwx------ 1000/1000 0 2011-09-18 14:39:28 test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:36 test/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2016-10-24 12:23:49 test/d2/<strong> </strong></ins></li>
+    <li class="ins"><ins>lrwxrwxrwx <strong>lucas/lucas</strong> 0 2016-10-24 12:22:14 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:39:42 test/d1/<strong> </strong></ins></li>
+    <li class="ins"><ins>drwx------ <strong>lucas/lucas</strong> 0 2011-09-18 14:44:35 test/d1/d1.1/<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 513 2011-09-18 14:44:19 test/d1/d1.1/f1.513<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 511 2011-09-18 14:44:21 test/d1/d1.1/f1.511<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2049 2011-09-18 14:44:35 test/d1/d1.1/f1.2049<strong> </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 512 2011-09-18 14:44:14 test/d1/d1.1/f1.512<strong> </strong></ins></li>
+    <li class="ins"><ins><strong>-@ £!!qkì•jÅÅ|q#N×è†İhàÇj‹ªX™ğ9ŒR&amp;k[¤X,¨ƒl$Øz_¼ä|z¬6ìvoeÙ›˜ì?ÈzsXéşéÏMÅì–£</strong></ins></li>
+    <li class="ins"><ins><strong>áƒ8øY6ò6¥İ¸ë¾û$µşºä75o×Ü¤Öe§qGï\â’¸lÉU)”Üó2ƒ‘ºv0ó5MÔd‰å¼~§8Ö+¢-:u;ÚÒ»œzJÉè	¦5iƒôNˆ.LKç´bfVzÂ¹cs äY=ãÜ´JÂ_şï±wR8«c#%fˆ‹F;=ìïCEpÿ1J/¯êüŸºº4ˆi¬ş/j‹ªX™ğ9ŒR&amp;k[¤X,¨ƒl$Øz_¼ä|z¬6ìvoeÙ›˜ì?ÈzsXéşéÏMÅì–£</strong></ins></li>
+    <li class="ins"><ins><strong>áƒ8øY6ò6¥İ¸ë¾û$µşºä75o×Ü¤Öe§qGï\â’¸lÉU)”Üó2ƒ‘ºv0ó5MÔd‰å¼~§8Ö+¢-:u;ÚÒ»œzJÉè	¦5iƒôNˆ.LKç´bfVzÂ¹cs äY=ãÜ´JÂ_şï±wR8«c#%fˆ‹F;=ìïCEpÿ1J/¯êüŸºº4ˆi¬ş 0 1970-01-01 00:00:00 y—&quot;ÖMŞ–æ\&gt;Ö </strong></ins></li>
+    <li class="ins"><ins><strong>-@ –j¶ú\: ×Ïm9àTÙ·´Ò8&gt;Z`ÅwO¶©&#39;&gt;LŸY¤c}°¡­Éÿ^5Pç&amp;/â[’ÓÇ™ØÂû¸A†vâëİûÇA¨‘ş[õH3láÆ*ERNZ§Ô*ª2²Æ¾ ¤Û”3VYÉNWĞoGàAfl‘&quot;P²5&amp;eª˜¬9’{Hp³~Î9B¯u ”ÄgıìÁo9¸8„ñ—¶‰÷%ozçÑuúiA’„aO&amp;@5&#39;J&amp;ù‹”®TÙ¯SËa}›êGOûG9}„C</strong></ins></li>
+    <li class="ins"><ins><strong>#æs	ívê]ùE4ó;g „ŒAn%pGKj&gt;}/Y¤c}°¡­Éÿ^5Pç&amp;/â[’ÓÇ™ØÂû¸A†vâëİûÇA¨‘ş[õH3láÆ*ERNZ§Ô*ª2²Æ¾ ¤Û”3VYÉNWĞoGàAfl‘&quot;P²5&amp;eª˜¬9’{Hp³~Î9B¯u ”ÄgıìÁo9¸8„ñ—¶‰÷%ozçÑuúiA’„aO&amp;@5&#39;J&amp;ù‹”®TÙ¯SËa}›êGOûG9}„C</strong></ins></li>
+    <li class="ins"><ins><strong>#æs	ívê]ùE4ó;g „ŒAn%pGKj&gt;} 0 1970-01-01 00:00:00 ¬œ/]&lt;ôMÄËñMÉkOÿŠØgJ4–#ÉÚ:sîˆQ?m“</strong></ins></li>
+    <li class="ins"><ins><strong>bœ¬¹¬A, </strong></ins></li>
+    <li class="ins"><ins><strong>-@ 5$r’Š½#ÃÈ2z™¾««,ÎôG’†I][Â—i¢bq1Qñó £w°^iÍUù(¥	.œÁ&lt;+¾aÁç1È›hQGŸV[sğú+—&quot;.Îïë—æ©»Èv¬´äzÃ3ˆ/¢bq1Qñó £w°^iÍUù(¥	.œÁ&lt;+¾aÁç1È›hQGŸV[sğú+—&quot;.Îïë—æ©»Èv¬´äzÃ3ˆ 0 1970-01-01 00:00:00 5ìò¨£VñÈ¿/;şn$“ƒ…è¥ï®õ¯e3íNL[ÍÔBìLGV7ù$Áä»à’c=±(s–¸S‹•bs«²ş)ü6</strong></ins></li>
+    <li class="ins"><ins><strong>˜L&quot;ôù}¼UŸµ…¦ô=#Q5ıº!ïÓ­â®„~#Çı¨QùOæd¼aÒPªRshj•ïÚ¢b ¹¯, </strong></ins></li>
+    <li class="ins"><ins><strong>-@ &gt;º¨%ƒ&amp;êÕ|rI#\eıOQh˜F…}üÛvn„Æ¾2I‚fûŒÌµ‰bõ1áË¤K­¨şVã×»±ußdŞzäzŸ‚Tl‘E/h€cLdáœ¤Œ2“Ô¦üÛJFn„Ø°¼­j~’</strong></ins></li>
+    <li class="ins"><ins><strong>Y ÊÁ­ÍÊ³N©‰9Y*Ó®Æ\ôÏO“•iQ_¯BÊf4</strong></ins></li>
+    <li class="ins"><ins><strong>Ë®Í)ÍÎÂv´Ha×ŸuÅ­O^w¬zs×ŞÙæˆqOôÓ\X¸vî*0%á—~ü/!otÑ=ww,ãµ.s4&quot;ÌÇÚ&quot;8áÒÊ›&#39;Ì*å¢¶P/2I‚fûŒÌµ‰bõ1áË¤K­¨şVã×»±ußdŞzäzŸ‚Tl‘E/h€cLdáœ¤Œ2“Ô¦üÛJFn„Ø°¼­j~’</strong></ins></li>
+    <li class="ins"><ins><strong>Y ÊÁ­ÍÊ³N©‰9Y*Ó®Æ\ôÏO“•iQ_¯BÊf4</strong></ins></li>
+    <li class="ins"><ins><strong>Ë®Í)ÍÎÂv´Ha×ŸuÅ­O^w¬zs×ŞÙæˆqOôÓ\X¸vî*0%á—~ü/!otÑ=ww,ãµ.s4&quot;ÌÇÚ&quot;8áÒÊ›&#39;Ì*å¢¶P 0 1970-01-01 00:00:00 †F}°¨Î†ÌÌJÂâ¹áÇåŒÂôØzâ‹m/˜6Ø	 ÏğX´×£ </strong></ins></li>
+    <li class="ins"><ins>-rw------- <strong>lucas/lucas</strong> 2048 2011-09-18 14:44:27 test/d1/d1.1/f1.2048<strong> </strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, extract without looking at attributes: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>f1.0</strong></del></li>
+    <li class="del"><del><strong>f1.2047</strong></del></li>
+    <li class="del"><del><strong>f1.2048</strong></del></li>
+    <li class="del"><del><strong>f1.2049</strong></del></li>
+    <li class="del"><del><strong>f1.511</strong></del></li>
+    <li class="del"><del><strong>f1.512</strong></del></li>
+    <li class="del"><del><strong>f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, extract without looking at attributes: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, extract without looking at attributes: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d2/symlink_to_f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, extract without looking at attributes (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>f1.0</strong></del></li>
+    <li class="del"><del><strong>f1.2047</strong></del></li>
+    <li class="del"><del><strong>f1.2048</strong></del></li>
+    <li class="del"><del><strong>f1.2049</strong></del></li>
+    <li class="del"><del><strong>f1.511</strong></del></li>
+    <li class="del"><del><strong>f1.512</strong></del></li>
+    <li class="del"><del><strong>f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, extract without looking at attributes (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, extract without looking at attributes (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>test/</strong></del></li>
+    <li class="del"><del><strong>test/d1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>test/d1/d1.1/f1.513</strong></del></li>
+    <li class="del"><del><strong>test/d2/</strong></del></li>
+    <li class="del"><del><strong>test/d2/symlink_to_f1.511</strong></del></li>
+    <li class="del"><del><strong>test/d3/</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>-rw-r--r-- vagrant/vagrant   0 2016-10-24 11:26 f1.0</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2016-10-24 11:26 f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2016-10-24 11:26 f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2016-10-24 11:26 f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  511 2016-10-24 11:26 f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2016-10-24 11:26 f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2016-10-24 11:26 f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d2/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, extract: Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2016-10-24 12:23 test/d2/</strong></del></li>
+    <li class="del"><del><strong>lrwxrwxrwx vagrant/vagrant   0 2016-10-24 12:22 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with files only, extract (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>-rw-r--r-- vagrant/vagrant   0 2016-10-24 11:26 f1.0</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2016-10-24 11:26 f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2016-10-24 11:26 f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2016-10-24 11:26 f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  511 2016-10-24 11:26 f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2016-10-24 11:26 f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2016-10-24 11:26 f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with dirs and files, extract (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d2/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+<h2>Test: archive with symlinks, extract (using more advanced monitoring tools): Fail</h2>
+Output of execution:<br/><pre></pre>
+Result different from expected one (left: expected; right: yours):<br/>
+<table><tr><td><div class="diff">
+  <ul>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:39 test/d3/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2011-09-18 14:44 test/d1/d1.1/</strong></del></li>
+    <li class="del"><del><strong>drwx------ vagrant/vagrant   0 2016-10-24 12:23 test/d2/</strong></del></li>
+    <li class="del"><del><strong>lrwxrwxrwx vagrant/vagrant   0 2016-10-24 12:22 test/d2/symlink_to_f1.511 -&gt; ../d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2047 2011-09-18 14:44 test/d1/d1.1/f1.2047</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2048 2011-09-18 14:44 test/d1/d1.1/f1.2048</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 2049 2011-09-18 14:44 test/d1/d1.1/f1.2049</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant 511 2011-09-18 14:44 test/d1/d1.1/f1.511</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  512 2011-09-18 14:44 test/d1/d1.1/f1.512</strong></del></li>
+    <li class="del"><del><strong>-rw------- vagrant/vagrant  513 2011-09-18 14:44 test/d1/d1.1/f1.513</strong></del></li>
+  </ul>
+</div>
+</td>
+<td><div class="diff">
+  <ul>
+    <li class="ins"><ins><strong>No files extracted from archive.</strong></ins></li>
+  </ul>
+</div>
+</td></tr></table>
+
+</div>
+</body>
+</html>
