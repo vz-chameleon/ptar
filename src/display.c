@@ -118,7 +118,7 @@ void displayDetailedListing(int fd,struct header file_header){
 			printf("%s",file_header.File_name);
 			if (file_header.Type_flag[0]=='2') //printing 'l' if symlink, else '-'
 							printf(" -> %s",file_header.Name_of_linked_file);
-			puts(" ");
+			printf("\n");
 		}
 
 		if(jump_size!=0){
