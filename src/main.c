@@ -21,7 +21,7 @@ int main(int argc, char** argv){
   int zflag=0;
   int pflag=0;
   
-  while((opt=getopt(argc,argv,"lxzph:"))!=-1){
+  while((opt=getopt(argc,argv,"lxhzp:"))!=-1){
     switch(opt){
     case 'h':
       hflag=1;
