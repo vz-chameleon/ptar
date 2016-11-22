@@ -109,8 +109,8 @@ void displayDetailedListing(int fd,struct header file_header){
 			else printf("%s","-");
 			//printf("%s ",PermissionString);
 			printPermissionString(file_header.File_mode);
-			printf("%s/",file_header.Owner_user_name);
-			printf("%s ",file_header.Owner_group_name);
+			printf("%ld/",octalToDecimal(file_header.Owner_s_numeric_user_ID));
+			printf("%ld ",octalToDecimal(file_header.Group_s_numeric_user_ID));
 			printf("%ld ", jump_size);
 			printModifTime(file_header.File_name,octalToDecimal(file_header.Last_modification_time_in_numeric_Unix_time_format_OctalB));
 
