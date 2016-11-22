@@ -77,15 +77,35 @@ int main(int argc, char** argv){
     int fd=open(argv[argc-1],O_RDONLY,0);
   
     struct header file_header;
+
+
+    //TODO: Think about the order of the flag verfication
+
+
+    if(lflag)
+      displayDetailedListing(fd,file_header); 	//if there is 'l' option, display the detailed listing
     
-    if ((!lflag)&&(!xflag)&&(!zflag)&&(!pflag)){
-        //if there is no option, display the simple listing (default behaviour)
-        displayFileNames(fd,file_header);
+    else{
+    	displayFileNames(fd,file_header);        //if there is no 'l' option, display the simple listing (default behaviour)
     }
-  
-    else if(lflag)
-      //TODO: complete this function in display.c
-      displayDetailedListing(fd,file_header);
+
+    if (pflag){
+    	//TODO: set number of threads to use
+    	//puts("thread setting : ");
+    	//puts("number");
+
+    }
+
+    if (zflag)
+    	//TODO: make sure to consider the gzip compression in our algorithms
+    	//puts("gzip set");
+
+
+    if (xflag){
+    	//TODO: extraction
+    	//puts("Extraction");
+    }
+
   
   }
   
