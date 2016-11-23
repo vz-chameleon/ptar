@@ -98,12 +98,11 @@ int main(int argc, char** argv){
 
     if (zflag)
     	//TODO: make sure to consider the gzip compression in our algorithms
-    	//puts("gzip set");
+    	puts("gzip set");
 
 
     if (xflag){
-    	//TODO: extraction
-    	//puts("Extraction");
+    	extractAll(fd,file_header);
     }
 
   

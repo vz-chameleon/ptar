@@ -40,16 +40,33 @@ struct header{
 
 /****** Functions in ptar.c ******/
 
-/* octalString: chaîne de caractères qui représente la taille du fichier en octal 
+/* octalString: string that represents file size in octal base
  *
- * Fait la conversion d'une chaîne de caractères d'un nombre en base 8 en un nombre en base 10
+ * Converts a number (described by a String) from octal to decimal base
  */
 long octalToDecimal(char* octalString);
 
 
+/*source_fd: file descriptor of a tar archive.
+ * header h: header structure to read into from tar archive
+ *
+ * This function is called by main() when -x option is used
+ * It loops through all files in the archive and calls upon
+ * extract(int source_fd, struct header h,long fileSize) function (below)
+ * to extract files, directories and symlinks into working directory.
+ *
+ */
+void extractAll(int source_fd, struct header h);
 
 
-
+/* source_fd: file descriptor of a tar archive.
+ * header h: header structure that contains the file's to extract specifications
+ * fileSize: size of the file to extract
+ *
+ * Extracts files, directories and symlinks into working directory.
+ *
+ */
+void extract(int source_fd, struct header h,long fileSize);
 
 
 /****** Functions in display.c ******/
