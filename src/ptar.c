@@ -35,23 +35,69 @@ long octalToDecimal(char * octalString){
 
 
 
+
+
+
+void setInfo(struct header h){
+
+	//Modify timestamp in extracted files
+
+
+	if(h.Type_flag[0]=='2'){
+		struct timeval tv;
+		tv.tv_sec=octalToDecimal(h.Last_modification_time_in_numeric_Unix_time_format_OctalB);
+		tv.tv_usec=0;
+		lutimes(h.File_name,&tv);
+	}
+	else{
+		struct utimbuf tb;
+		tb.actime=octalToDecimal(h.Last_modification_time_in_numeric_Unix_time_format_OctalB);
+		tb.modtime=tb.actime;
+		utime(h.File_name,&tb);
+
+	}
+
+
+	//Change group permissions - same procedure for all files
+	chown(h.File_name,h.Owner_user_name,h.Owner_group_name);
+}
+
+
+void setInfoAll(int source_fd, struct header h){
+	lseek(source_fd,0,SEEK_SET); //move back to beginning of tar file.
+	long fileSize = 0;
+	int lectureHeader = read(source_fd,&h,512);
+
+	while(lectureHeader != 0){
+		fileSize = octalToDecimal(h.File_size_in_bytes_octalB);
+		if(strlen(h.File_name)!=0)
+			setInfo(h);
+
+		//and read it
+		lectureHeader = read(source_fd,&h,512);
+	}
+}
+
+
+
+
 void extract(int source_fd, struct header h,long fileSize){
 	//If it's a normal file...
 	if (h.Type_flag[0]=='0'){
 		int destination=open(h.File_name,O_CREAT|O_WRONLY,strtoul(h.File_mode,0,8));
 		if (destination == -1) {
-	        printf("Erreur dans l'ouverture du fichier de destination");
-	        close(destination);
-	        exit(EXIT_FAILURE);
-	    }
+			printf("Erreur dans l'ouverture du fichier de destination pour %s", h.File_name);
+			close(destination);
+			exit(EXIT_FAILURE);
+		}
 		//sendfile writes data from source file descriptor to destination file descriptor
 		int writing = sendfile(destination, source_fd, NULL, fileSize);
 
 		if (writing == -1) {
-			        printf("Erreur dans l'ecriture du fichier de destination");
-			        close(destination);
-			        exit(EXIT_FAILURE);
-			    }
+			printf("Erreur dans l'ecriture du fichier de destination pour %s", h.File_name);
+			close(destination);
+			exit(EXIT_FAILURE);
+		}
 
 		close(destination);
 
@@ -88,7 +134,7 @@ void extract(int source_fd, struct header h,long fileSize){
 
 
 void extractAll(int source_fd, struct header h){
-	lseek(source_fd,0,SEEK_SET);
+	lseek(source_fd,0,SEEK_SET); //move back to beginning of tar file.
 	long fileSize = 0;
 	int lectureHeader = read(source_fd,&h,512);
 
@@ -99,9 +145,9 @@ void extractAll(int source_fd, struct header h){
 
 		//and read it
 		lectureHeader = read(source_fd,&h,512);
-
-
 	}
 
+	setInfoAll(source_fd,h);
 }
+
 
