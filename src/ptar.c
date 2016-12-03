@@ -44,10 +44,11 @@ void setInfo(struct header h){
 
 
 	if(h.Type_flag[0]=='2'){
-		struct timeval tv;
-		tv.tv_sec=octalToDecimal(h.Last_modification_time_in_numeric_Unix_time_format_OctalB);
-		tv.tv_usec=0;
-		lutimes(h.File_name,&tv);
+		struct timeval tv[2];
+		tv[0].tv_sec=octalToDecimal(h.Last_modification_time_in_numeric_Unix_time_format_OctalB);
+		tv[0].tv_usec=0;
+		tv[1]=tv[0];
+		lutimes(h.File_name,tv);
 	}
 	else{
 		struct utimbuf tb;
