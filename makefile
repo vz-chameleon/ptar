@@ -1,6 +1,6 @@
 
 ptar : src/ptar.h src/ptar.o src/display.o src/main.o
-	gcc -g src/ptar.o src/display.o src/main.o -o ptar -lm
+	gcc -g src/ptar.o src/display.o src/main.o -o ptar -lm -pthread
 	 
 ptar.o : src/ptar.h src/ptar.c
 	gcc -g -c src/ptar.c 

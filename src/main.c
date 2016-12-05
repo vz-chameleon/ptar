@@ -8,6 +8,7 @@
 #include "ptar.h"
 
 
+
 int main(int argc, char** argv){
   if (argc<2){
     printf("Error : ptar command requires one or more arguments \nIf you need help, try running ptar with -h option \n");
@@ -73,8 +74,9 @@ int main(int argc, char** argv){
     
     //char fileName[strlen(argv[argc-1])];
     //strcpy(fileName,argv[argc-1]);
-    
-    int fd=open(argv[argc-1],O_RDONLY,0);
+    archive = malloc(sizeof(argv[argc-1]));
+    strcpy(archive,argv[argc-1]);
+    int fd=open(archive,O_RDONLY,0);
   
     struct header file_header;
 
@@ -90,10 +92,28 @@ int main(int argc, char** argv){
     }
 
     if (pflag){
+    	multithread_mode=1;
+    	num_threads=4;
+    	sem_init(&thread_semaphore,0,num_threads);
+
+    	numbers = malloc(sizeof(int)*num_threads);
+    	headers=malloc(512*num_threads);
+    	mutex = malloc(sizeof(pthread_mutex_t)*num_threads);
+    	tid = malloc(sizeof(pthread_t)*num_threads);
+    	int i;
+    	for (i=0; i< num_threads; i++){
+    		numbers[i]=i;
+    		pthread_mutex_init(&mutex[i],NULL);
+    	}
+
+
+
     	//TODO: set number of threads to use
     	//puts("thread setting : ");
     	//puts("number");
 
+    }else{
+    	multithread_mode=0;
     }
 
     if (zflag)
@@ -102,7 +122,10 @@ int main(int argc, char** argv){
 
 
     if (xflag){
-    	extractAll(fd,file_header);
+    	if (multithread_mode)
+    		thread_extractAll(fd,file_header);
+    	else
+    		extractAll(fd,file_header);
     }
 
   

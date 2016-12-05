@@ -35,6 +35,18 @@ struct header{
 	char rest_up_to_512[12];											//512
 	};
 
+#include <semaphore.h>
+#include <pthread.h>
+extern int multithread_mode;
+extern int num_threads;
+extern sem_t thread_semaphore;
+extern int * numbers;
+extern pthread_mutex_t *mutex;
+extern struct header *headers;
+extern pthread_t * tid;
+extern char *archive;
+
+
 
 
 
@@ -50,7 +62,7 @@ long octalToDecimal(char* octalString);
 /*source_fd: file descriptor of a tar archive.
  * header h: header structure to read into from tar archive
  *
- * This function is called by main() when -x option is used
+ * This function is called by main() when -x option is used and -p is not
  * It loops through all files in the archive and calls upon
  * extract(int source_fd, struct header h,long fileSize) function (below)
  * to extract files, directories and symlinks into working directory.
@@ -64,9 +76,47 @@ void extractAll(int source_fd, struct header h);
  * fileSize: size of the file to extract
  *
  * Extracts files, directories and symlinks into working directory.
+ * It uses the file header stored in 'h' for information about filetype, name ...
+ * It uses the Cursor associated with the source_fd file descriptor to know
+ * where to extract the data from.
  *
  */
 void extract(int source_fd, struct header h,long fileSize);
+
+
+/** source_fd: file descriptor of a tar archive.
+ * header h: header structure to read into from tar archive
+ *
+ * This function is the thread-compatible version of 'extractAll'
+ * This function is called by main() when -x AND -p options are used.
+ * It loops through all files in the archive, creating directories
+ * when encountered, and calls upon * thread_extract(void *) function (below)
+ * in a new thread to extract files and symlinks.
+ * It uses the global instances (initialised in main.c on usage of -p option)
+ * 		- sem_t thread_semaphore;
+ *  	- int * numbers;
+ *		- extern struct header *headers;
+ * 		- pthread_mutex_t *mutex;
+ * 		- pthread_t * tid;
+ *
+ * 		in order to control threads and avoid data access conficts.
+ *
+ */
+void thread_extractAll(int source_fd, struct header h);
+
+/** i: int pointer, representing the current thread in all the global instances
+ * mentioned above where it stores its data.
+ *
+ *
+ * Extracts a normal file or a symlink into working directory into
+ * the right folder.
+ *
+ * Calls upon fsync to make sure the data is physically extracted on the disk
+ *
+ * Frees its mutex and then a unit of the semaphore before ending.
+ *
+ */
+void thread_extract_file_symlink(void * i);
 
 
 /****** Functions in display.c ******/
