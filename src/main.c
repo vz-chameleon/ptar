@@ -42,6 +42,7 @@ int main(int argc, char** argv){
 
     case 'p':
       pflag=1;
+      num_threads=atoi(optarg);
       break;
 
     case '?':
@@ -93,7 +94,6 @@ int main(int argc, char** argv){
 
     if (pflag){
     	multithread_mode=1;
-    	num_threads=4;
     	sem_init(&thread_semaphore,0,num_threads);
 
     	numbers = malloc(sizeof(int)*num_threads);
