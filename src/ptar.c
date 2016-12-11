@@ -225,7 +225,7 @@ void thread_extractAll(int source_fd, struct header h){
 	lseek(source_fd,0,SEEK_SET); 					//move back to beginning of tar file.
 	long fileSize = 0;
 	int continueToRead = 1;
-	offset = malloc(num_threads*sizeof(int));		//initialising offset array with proper size
+	offset = malloc(num_threads*sizeof(off_t));		//initialising offset array with proper size
 
 	int i;
 
@@ -249,7 +249,7 @@ void thread_extractAll(int source_fd, struct header h){
 					break;
 				}else{
 				fileSize=octalToDecimal(headers[i].File_size_in_bytes_octalB);
-				offset[i]=SEEK_CUR;						//copying offset into offset[i]
+				offset[i]=lseek(source_fd, 0, SEEK_CUR);						//copying offset into offset[i]
 
 
 					if (headers[i].Type_flag[0]!='5'){	// if it's NOT a folder

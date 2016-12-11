@@ -75,7 +75,7 @@ int main(int argc, char** argv){
     
     //char fileName[strlen(argv[argc-1])];
     //strcpy(fileName,argv[argc-1]);
-    archive = malloc(sizeof(argv[argc-1]));
+    archive = malloc((strlen(argv[argc-1])+1)*sizeof(char));
     strcpy(archive,argv[argc-1]);
     int fd=open(archive,O_RDONLY,0);
   
@@ -130,6 +130,6 @@ int main(int argc, char** argv){
 
   
   }
-  
+  free(archive);
   return 0;
 } 
